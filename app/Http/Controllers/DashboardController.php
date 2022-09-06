@@ -232,9 +232,19 @@ class DashboardController extends Controller
          
     }
 
-    public function showProfil()
+    public function editProfil()
     {
-        return view('dashboard.editprofil');
+        $data = DB::table("biodatas")->first();
+        return view('dashboard.editprofil',compact("data"));
+    }
+    public function updateProfil(Request $request,$id)
+    {
+        DB::table("biodatas")->where("id",$id)->update([
+            "nama"=>$request->nama,
+            "nohp"=>$request->hp,
+            "alamat"=>$request->alamat
+        ]);
+return redirect()->back();
     }
 
 

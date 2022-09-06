@@ -77,4 +77,5 @@ Route::get('/contact/{id}', [ContactController::class, 'show'])->middleware(['au
 
 Route::post('/contact/{id}', [ContactController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::get('editprofil/{id}', [DashboardController::class, 'showProfil'])->middleware(['auth', 'user']);
+Route::get('editprofil/{id}', [DashboardController::class, 'editProfil'])->middleware(['auth', 'user']);
+Route::post('editprofil/{id}', [DashboardController::class, 'updateProfil'])->middleware(['auth', 'user']);
