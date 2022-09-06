@@ -1,61 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('template.landingTemplate')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extrass</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css">
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('style.css')}}">
-</head>
-
-<body id="body">
-
-    <nav class="navbar navbar-expand-lg p-sm-1 p-1 position-fixed w-100 navbar-dark">
-        <div class="container ">
-            <a class="tittle navbar-brand " href="#">Extrass</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto ">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#body">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#extra">Extra</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a class="nav-link" href="#footer">Contact</a>
-                    </li>
-
-                    @if (Auth::check() == false)
-                    <li><button type="button" class="btn "><a href="/login" style="text-decoration: none; color: white;">Login</a></button></li>
-                    <li><button type="button" class="btn boot ms-2"><a href="/register" style="text-decoration: none; color: white;">Daftar</a></button></li>
-                    @endif
-                    @if (Auth::check() == true)
-                    {{-- <p>{{ $data->nama }}</p> --}}
-                    <li><button type="button" class="btn boot"><a href="/logout" style="text-decoration: none; color: white;">Logout</a></button></li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-
-
-    <section class="hero" style=" background-image:url(img/extra.png) ; background-size:
-        cover; background-repeat: no-repeat; background-position:0 -140px;">
-        <div class="jumbotron jumbotron-fluid d-flex align-items-center min-vh-100" style="background-color:rgba(0,0,0,0.5) ;">
+@section("main")
+    <section class="hero" style=" background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(img/extra.png) ; background-size:
+        cover; background-repeat: no-repeat; background-position:center;">
+        <div class="jumbotron jumbotron-fluid d-flex align-items-center min-vh-100" >
             <div class="container ">
                 <div class="row d-flex  align-items-center">
                     <div class="col-sm-6">
@@ -80,8 +28,8 @@
     </div> -->
 
     <section class="about-page">
-        <div class="about-container">
-            <div class="about-row">
+        <div class="about-container ">
+            <div class="about-row   ">
                 <div class="about-image">
                     <img src="img/futsal.jpg" class="img-fluid" alt="">
                 </div>
@@ -99,7 +47,7 @@
         </div>
     </section>
 
-    <section class="extra mt-5 pt-5" style="background-color:#E0DECA ;" id="extra">
+    <section class="extra mt-sm-5 pt-5" style="background-color:#E0DECA ;" id="extra">
         <div class="jumbotron">
             <div class="container pb-5 menu">
                 <h3><b>EXTRAKULIKULER</b></h3>
@@ -199,38 +147,23 @@
     </section>
 
 
+    <section>
+        <h3><b>Contact <span>US</span></b></h3>
+        <div class="container">
+            <div class="row">
+                <div class="col">
 
-    <footer>
-        <div class="content">
-            <div class="menu">
-                <ul class="d-flex " style="list-style: none">
-                    <li class="">
-                        <a class="footer-link" aria-current="page" href="#body">Home</a>
-                    </li>
-                    <li class="">
-                        <a class="footer-link" href="#about">About</a>
-                    </li>
-                    <li class="">
-                        <a class="footer-link" href="#extra">Extra</a>
-                    </li>
-                    <li class=" me-5">
-                        <a class="footer-link" href="#footer">Contact</a>
-                    </li>
-                </ul>
+                </div>
+                <div class="col">
+
+                </div>
             </div>
-            <span class="line"></span>
-            <span id="footer">
-                2022 copyright extrass SMK NEGERI 1 BONDOWOSO </span>
         </div>
-    </footer>
+    </section>
 
 
 
-    <!-- <img src="img/p.png" alt=""> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="script.js"></script>
-</body>
 
-</html>
+
+
+@endsection

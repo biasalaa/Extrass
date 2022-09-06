@@ -8,6 +8,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\extraController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\UserRegisController;
+use App\Http\Controllers\blogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +64,5 @@ Route::resource('/category', categoryController::class)->middleware(['auth', 'ad
 
 
 Route::resource('/userregister', UserRegisController::class)->middleware(['auth', 'admin']);
+
+Route::resource('/blog', blogController::class);
