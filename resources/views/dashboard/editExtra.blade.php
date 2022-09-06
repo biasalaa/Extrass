@@ -11,12 +11,22 @@
                     <div class="input-field col s12">
                         <input id="name" name="nama_extra" value="{{$data->nama_extra}}" type="text">
                         <label for="name">Nama Extra : </label>
+                        @error('nama_extra')
+                            <small style="color: red;">
+                                {{$message}}
+                            </small>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="desc" name="desc" value="{{$data->deskripsi}}" type="text">
                         <label for="desc">Deskripsi</label>
+                        @error('desc')
+                            <small style="color: red;">
+                                {{$message}}
+                            </small>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
@@ -25,11 +35,21 @@
                         <input id="f" name="file" class="form-control" type="file">
 
                     </div>
+                    @error('file')
+                        <small style="color: red;">
+                            {{$message}}
+                        </small>
+                    @enderror
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="pg" type="text" value="{{$data->penanggung_jawab}}"  name="pg" class="materialize-textarea" style="height: 46px;"></textarea>
                         <label for="pg">penanggung jawab</label>
+                        @error('pg')
+                            <small style="color: red;">
+                                {{$message}}
+                            </small>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
@@ -39,6 +59,11 @@
                         <option {{$data->category_id == $d->id ? "selected":""}} value="{{$d->id}}">{{$d->nama_category}}</option>
                         @endforeach
                     </select>
+                    @error('category')
+                        <small style="color: red;">
+                            {{$message}}
+                        </small>
+                    @enderror
                 </div>
 
                 <button class="modal-action modal-close btn" type="button">close</button>

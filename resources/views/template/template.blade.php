@@ -46,6 +46,11 @@
                                             <h4>{{ Auth::user()->username }}</h4>
                                         </div>
                                 </li>
+                                @if(Auth::user()->role == "user")
+                                <li>
+                                    <a href="/editprofil/{{ Auth::user()->id }}">Edit Profil</a>
+                                </li>
+                                @endif
                                 <li><a href="/logout"><i class="material-icons">power_settings_new</i> Logout</a></li>
                             </ul>
                         </li>
@@ -81,9 +86,11 @@
                                 <ul>
                                     <li><a href="/dataextrakulikuler"><i class="fas fa-basketball-ball"></i><span class="hide-menu">Extrakulikuler</span></a></li>
                                     <li><a href="/category"><i class="fas fa-window-restore"></i><span class="hide-menu">Category</span></a></li>
-                                    <li><a href="/berita"><i class="fas fa-newspaper"></i><span class="hide-menu">Berita Extra</span></a></li>
                                 </ul>
                             </div>
+                        </li>
+                        <li>
+                            <a href="/contact" class="collapsible-header"><i style="color: white;" class="fas fa-address-book"></i><span class="hide-menu">Contact</span></a>
                         </li>
                         @endif
                         @if (Auth::user()->role == 'user')

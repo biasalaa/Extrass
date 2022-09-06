@@ -7,7 +7,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\extraController;
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserRegisController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,3 +68,13 @@ Route::resource('/dataextrakulikuler', extraController::class)->middleware(['aut
 Route::resource('/category', categoryController::class)->middleware(['auth', 'admin']);
 
 Route::resource('/userregister', UserRegisController::class)->middleware(['auth', 'admin']);
+
+Route::post('/contact', [ContactController::class, 'store'])->middleware('guest');
+
+Route::get('/contact', [ContactController::class, 'index'])->middleware(['auth', 'admin']);
+
+Route::get('/contact/{id}', [ContactController::class, 'show'])->middleware(['auth', 'admin']);
+
+Route::post('/contact/{id}', [ContactController::class, 'destroy'])->middleware(['auth', 'admin']);
+
+Route::get('editprofil/{id}', [DashboardController::class, 'showProfil'])->middleware(['auth', 'user']);

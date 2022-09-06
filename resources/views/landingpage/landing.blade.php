@@ -54,7 +54,7 @@
 
 
     <section class="hero" style=" background-image:url(img/extra.png) ; background-size:
-        cover; background-repeat: no-repeat; background-position:0 -140px;">
+        cover; background-repeat: no-repeat; background-position:center;">
         <div class="jumbotron jumbotron-fluid d-flex align-items-center min-vh-100" style="background-color:rgba(0,0,0,0.5) ;">
             <div class="container ">
                 <div class="row d-flex  align-items-center">
@@ -201,26 +201,65 @@
 
 
     <footer>
-        <div class="content">
-            <div class="menu">
-                <ul class="d-flex " style="list-style: none">
-                    <li class="">
-                        <a class="footer-link" aria-current="page" href="#body">Home</a>
-                    </li>
-                    <li class="">
-                        <a class="footer-link" href="#about">About</a>
-                    </li>
-                    <li class="">
-                        <a class="footer-link" href="#extra">Extra</a>
-                    </li>
-                    <li class=" me-5">
-                        <a class="footer-link" href="#footer">Contact</a>
-                    </li>
-                </ul>
+        <div class="row">
+            <div class="col-6">
+                <form action="/contact" method="post">
+                    @csrf
+                    <h2 class="text-white">Contact Us</h2>
+                    <div class="mb-3 form-group">
+                        <label  for="" class="text-white">Nama</label>
+                        <input type="text" name="nama" class="form-control">
+                        @error('nama')
+                             <small style="color: red;">
+                                {{$message}}
+                        </small>
+                        @enderror
+                    </div>
+                    
+                    <div class="mb-3 form-group">
+                        <label for="" class="text-white">Email</label>
+                        <input type="email" name="email"  class="form-control">
+                        @error('email')
+                             <small style="color: red;">
+                                {{$message}}
+                        </small>
+                        @enderror
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="" class="text-white">Message</label>
+                        <textarea   class="form-control" name="message"></textarea>
+                        @error('message')
+                             <small style="color: red;">
+                                {{$message}}
+                        </small>
+                        @enderror
+                    </div>
+                    <button class="btn btn-primary">Kirim</button>
+                </form>
             </div>
-            <span class="line"></span>
-            <span id="footer">
-                2022 copyright extrass SMK NEGERI 1 BONDOWOSO </span>
+            <div class="col-6">
+            <div class="content">
+                <div class="menu">
+                    <ul class="d-flex " style="list-style: none">
+                        <li class="">
+                            <a class="footer-link" aria-current="page" href="#body">Home</a>
+                        </li>
+                        <li class="">
+                            <a class="footer-link" href="#about">About</a>
+                        </li>
+                        <li class="">
+                            <a class="footer-link" href="#extra">Extra</a>
+                        </li>
+                        <li class=" me-5">
+                            <a class="footer-link" href="#footer">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="line"></span>
+                <span id="footer">
+                    2022 copyright extrass SMK NEGERI 1 BONDOWOSO </span>
+            </div>
+            </div>
         </div>
     </footer>
 

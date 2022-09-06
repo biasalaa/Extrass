@@ -10,6 +10,11 @@
                 <option value="{{ $a->id }}" {{ $data->extrakulikuler_id == $a->id ?  "selected" : ""}} >{{ $a->nama_extra }}</option>
             @endforeach
         </select>
+        @error('extra')
+                <small style="color: red;">
+                    {{$message}}
+                </small>
+        @enderror
         <button class="btn">Update</button>
     </form>
     </div>

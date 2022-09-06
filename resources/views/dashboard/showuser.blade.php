@@ -3,7 +3,7 @@
 @section('main')
 <button class="btn cyan waves-effect waves-light" type="submit" name="action"><a href="/userterdaftar" style="text-decoration: none; color: white;">< Back</a>
 </button>
-    <div style="margin-left: 200px; margin-top: 100px;">
+    <div class="container">
         <h1>Biodata User</h1> <br>
         <h3>Nama : {{ $datas->nama }}</h3> <br>
         <h3>No Handphone: {{ $datas->nohp }}</h3> <br>

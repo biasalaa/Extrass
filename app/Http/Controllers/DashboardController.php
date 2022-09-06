@@ -232,5 +232,10 @@ class DashboardController extends Controller
          
     }
 
+    public function showProfil()
+    {
+        return view('dashboard.editprofil');
+    }
+
 
 }
