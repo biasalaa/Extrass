@@ -244,7 +244,7 @@ class DashboardController extends Controller
             "nohp"=>$request->hp,
             "alamat"=>$request->alamat
         ]);
-return redirect()->back();
+return redirect("/dashboard");
     }
 
 

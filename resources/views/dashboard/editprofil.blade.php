@@ -17,12 +17,7 @@
                         <label for="desc">Deskripsi</label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="f" name="file" class="form-control" type="file">
 
-                    </div>
-                </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="pg" name="alamat" class="materialize-textarea" style="height: 46px;">{{$data->alamat}}</textarea>
