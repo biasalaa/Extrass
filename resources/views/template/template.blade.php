@@ -14,6 +14,8 @@
 </head>
 
 <body>
+@include('sweetalert::alert')
+
     <div class="main-wrapper" id="main-wrapper">
         <div class="preloader">
             <div class="loader">
@@ -78,7 +80,8 @@
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="/dataextrakulikuler"><i class="fas fa-basketball-ball"></i><span class="hide-menu">Extrakulikuler</span></a></li>
-                                    <li><a href="/category"><i class="fas fa-basketball-ball"></i><span class="hide-menu">Category</span></a></li>
+                                    <li><a href="/category"><i class="fas fa-window-restore"></i><span class="hide-menu">Category</span></a></li>
+                                    <li><a href="/berita"><i class="fas fa-newspaper"></i><span class="hide-menu">Berita Extra</span></a></li>
                                 </ul>
                             </div>
                         </li>

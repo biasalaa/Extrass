@@ -44,11 +44,11 @@
             <td>{{ $a->nama_category }}</td>
 
             <td>
-                <button class="btn"><a href="/category/{{ $a->id }}/edit"><i class="fas fa-edit"></i></a></button>
+                <button style="background-color: blue;" class="btn"><a href="/category/{{ $a->id }}/edit" style="color: white;"><i class="fas fa-edit"></i></a></button>
                 <form action="/category/{{ $a->id }}" method="POST" style="display: inline-block;">
                     @csrf
                     @method('DELETE')
-                    <button class="btn" type="submit"><i class="fas fa-trash" style="color: red;"></i></button>
+                    <button style="background-color: red;" class="btn" type="submit"><i class="fas fa-trash" style="color: white;"></i></button>
                 </form>
             </td>
         </tr>

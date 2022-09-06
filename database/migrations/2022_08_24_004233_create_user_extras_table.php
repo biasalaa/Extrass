@@ -14,7 +14,7 @@ class CreateUserExtrasTable extends Migration
     public function up()
     {
         Schema::create('user_extras', function (Blueprint $table) {
-            $table->id();
+            $table->id('p');
             $table->bigInteger('biodata_id')->unsigned();
             $table->bigInteger('extrakulikuler_id')->unsigned();
             $table->timestamps();

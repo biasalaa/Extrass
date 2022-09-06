@@ -7,7 +7,7 @@
     .coba img{
         border-radius:20px ;
         width: 30% ;
-        margin-left:700px;
+        margin-left:480px;
     }
     .coba h4{
         width:100%  !important;

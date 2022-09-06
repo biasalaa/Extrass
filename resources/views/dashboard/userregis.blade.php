@@ -21,11 +21,11 @@
             <td>{{ $a->nohp }}</td>
             <td>{{ $a->alamat }}</td>
             <td>
-                <button class="btn"><a href="/userregister/{{ $a->id }}/edit"><i class="fas fa-edit"></i></a></button>
+                <button style="background-color: blue;" class="btn"><a href="/userregister/{{ $a->id }}/edit" style="color: white;"><i class="fas fa-edit"></i></a></button>
                 <form action="/userregister/{{ $a->id }}" method="post" style="display: inline-block;">
                     @csrf
                     @method('DELETE')
-                    <button class="btn" type="submit" style="color: red;"><i class="fas fa-trash"></i></button>
+                    <button style="background-color: red;" class="btn" type="submit" style="color: white;"><i class="fas fa-trash"></i></button>
                 </form>
             </td>
         </tr>

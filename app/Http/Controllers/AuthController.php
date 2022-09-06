@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Biodata;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -32,6 +32,7 @@ class AuthController extends Controller
 
             return redirect()->intended('/dashboard');
         } else {
+            Alert::alert()->error('username atau password salah!');
             return redirect()->back()->with("error", "gagal login");
         }
     }
@@ -58,7 +59,7 @@ class AuthController extends Controller
             'nama' => ['required'],
             'nohp' => ['required'],
             'username' => ['required', 'unique:users'],
-            'password' => ['required'],
+            'password' => ['required', 'min:8'],
             'alamat' => ['required']
         ]);
 

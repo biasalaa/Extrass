@@ -57,9 +57,12 @@ Route::get('/deleteuser/{id}', [DashboardController::class, 'DeleteUser'])->midd
 
 Route::get('/deleteextra/{id}', [DashboardController::class, 'DeleteExtra'])->middleware(['auth', 'admin']);
 
+Route::get('edituserterdaftar/{id}', [DashboardController::class, 'EditUser'])->middleware(['auth', 'admin']);
+
+Route::post('edituserterdaftar/{id}', [DashboardController::class, 'EditUserTerdaftar'])->middleware(['auth', 'admin']);
+
 Route::resource('/dataextrakulikuler', extraController::class)->middleware(['auth', 'admin']);
 
 Route::resource('/category', categoryController::class)->middleware(['auth', 'admin']);
-
 
 Route::resource('/userregister', UserRegisController::class)->middleware(['auth', 'admin']);

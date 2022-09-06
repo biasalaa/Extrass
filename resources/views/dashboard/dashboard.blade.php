@@ -36,5 +36,36 @@
         </div>
     </div>
 </div>
+@elseif(Auth::user()->role == 'user')
+<?php
+$a=array("warning-gradien","success-gradient","info-gradient","primary-gradient");
+$random_keys=array_rand($a,4);
+$i = 1;
+?>
+
+<div class="row">
+    @foreach($extraAll as $s)
+    <div class="col l3 m6 s12">
+        @php
+        if(count($a) <= $i) $i = 1;
+        @endphp
+        <div class="card <?=  $a[$random_keys[$i++]] ?> card-hover">
+            <div class="card-content">
+                <div class="d-flex no-block align-items-center">
+                    <div>
+                        <h2 class="white-text m-b-5">{{ $s->dataUser }} </h2>
+                        <h6 class="white-text op-5">{{$s->nama_extra}}</h6>
+                    </div>
+                    <div class="ml-auto">
+                        <span class="white-text display-6"><i class="material-icons">receipt</i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @endforeach
+
+</div>
 @endif
 @endsection

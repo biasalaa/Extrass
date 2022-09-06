@@ -70,12 +70,12 @@
             <td>{{ $a->penanggung_jawab }}</td>
             <td>{{ $a->nama_category }}</td>
             <td>
-                <button class="btn"><a href="/dataextrakulikuler/{{ $a->id }}" style="color: yellow;"><i class="fas fa-eye"></i></a></button>
-                <button class="btn"><a href="/dataextrakulikuler/{{ $a->id }}/edit" class="text-info"><i class="fas fa-edit"></i></a></button>
+                <button style="background-color: yellow;" class="btn"><a href="/dataextrakulikuler/{{ $a->id }}" style="color: black;"><i class="fas fa-eye"></i></a></button>
+                <button style="background-color: blue;" class="btn"><a href="/dataextrakulikuler/{{ $a->id }}/edit" class="text-info" style="color: white;"><i class="fas fa-edit"></i></a></button>
                 <form action="/dataextrakulikuler/{{ $a->id }}" method="POST" style="display: inline-block;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn"><a style="color: red;"><i class="fas fa-trash"></i></a></button>
+                    <button style="background-color: red;" type="submit" class="btn"><a style="color: white;"><i class="fas fa-trash"></i></a></button>
                 </form>
             </td>
         </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserRegisController extends Controller
 {
@@ -122,6 +123,8 @@ class UserRegisController extends Controller
             "alamat" => $request->alamat
         ]);
 
+        Alert::alert()->success('Data Berhasil Di Edit');
+
 
         return redirect('userregister');
     }
@@ -134,6 +137,9 @@ class UserRegisController extends Controller
      */
     public function destroy($id)
     {
+
+        Alert::alert()->success('Data Berhasil Di Hapus');
+
         DB::table('biodatas')->where('id', $id)->delete();
 
         return redirect()->back();

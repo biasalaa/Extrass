@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Extrakulikuler;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class extraController extends Controller
 {
     /**
@@ -67,6 +69,9 @@ class extraController extends Controller
             "category_id"=>$request->category
         ]);
 
+
+        Alert::alert()->success('Data Berhasil Di Tambahkan');
+
         return redirect()->back();
     }
 
@@ -126,6 +131,8 @@ class extraController extends Controller
                 "category_id"=>$request->category
             ]);
 
+        Alert::alert()->success('Data Berhasil Di Edit');
+
             return redirect('/dataextrakulikuler');
            }
 
@@ -143,6 +150,8 @@ class extraController extends Controller
             "category_id"=>$request->category
         ]);
 
+        Alert::alert()->success('Data Berhasil Di Edit');
+
         return redirect('/dataextrakulikuler');
     }
 
@@ -154,6 +163,10 @@ class extraController extends Controller
      */
     public function destroy($id)
     {
+
+
+        Alert::alert()->success('Data Berhasil Di Hapus');
+
         DB::table('extrakulikulers')->where('id', $id)->delete();
 
         return redirect()->back();

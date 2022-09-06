@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class categoryController extends Controller
 {
@@ -44,6 +45,9 @@ class categoryController extends Controller
         Category::create([
             "nama_category"=>$request->nama_category
         ]);
+
+        Alert::alert()->success('Data Berhasil Di Tambah');
+
         return redirect()->back();
     }
 
@@ -82,6 +86,7 @@ class categoryController extends Controller
     public function update(Request $request, $id)
     {
         DB::table('categories')->where('id', $id)->update(['nama_category' => $request->category]);
+        Alert::alert()->success('Data Berhasil Di Edit');
 
         return redirect('/category');
     }
@@ -94,7 +99,10 @@ class categoryController extends Controller
      */
     public function destroy($id)
     {
+
+        
         DB::table('categories')->where('id', $id)->delete();
+        Alert::alert()->success('Data Berhasil Di Hapus');
 
         return redirect()->back();
     }

@@ -13,6 +13,5 @@
             <h3> - {{$a->nama_extra }}</h3>
         @endforeach
         <br>
-        <button class="btn" style="background-color: red;"><a href="/deleteuser/{{ $a->id }}" style="color: white; text-decoration:none;">Delete User</a></button>
     </div>
 @endsection

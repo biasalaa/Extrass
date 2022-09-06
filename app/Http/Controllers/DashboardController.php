@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Biodata;
 use App\Models\Extrakulikuler;
 use App\Models\UserExtra;
-use App\Models\Berita;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class DashboardController extends Controller
 {
@@ -17,10 +18,21 @@ class DashboardController extends Controller
     {
         $biodata = Biodata::where('id', '>', 1)->count();
         $extra = Extrakulikuler::all()->count();
+        // $extraAll = Extrakulikuler::all();
+        $extraAll = DB::table("extrakulikulers")
+        ->select("extrakulikulers.*")
+        ->selectRaw("count(user_extras.p) as dataUser")
+        ->leftJoin("user_extras","extrakulikulers.id","user_extras.extrakulikuler_id")
+        ->groupBy("extrakulikulers.id")
+        ->get();
 
+
+
+  
         return view('dashboard.dashboard', [
             "biodata" => $biodata,
-            "extra" => $extra
+            "extra" => $extra,
+            "extraAll" => $extraAll
         ]);
     }
 
@@ -32,7 +44,7 @@ class DashboardController extends Controller
         $datas = DB::table('extrakulikulers')
                 ->join('user_extras', 'extrakulikulers.id', '=', 'user_extras.extrakulikuler_id')
                 ->join('biodatas', 'user_extras.biodata_id', '=', 'biodatas.id')
-                ->select('extrakulikulers.nama_extra', 'extrakulikulers.id', 'biodatas.*')
+                ->select('extrakulikulers.nama_extra', 'user_extras.p', 'biodatas.*')
                 ->get();
 
         return view('dashboard.userterdaftar', [
@@ -50,7 +62,7 @@ class DashboardController extends Controller
         $datas = DB::table('extrakulikulers')
                 ->join('user_extras', 'extrakulikulers.id', '=', 'user_extras.extrakulikuler_id')
                 ->join('biodatas', 'user_extras.biodata_id', '=', 'biodatas.id')
-                ->select('extrakulikulers.nama_extra', 'extrakulikulers.id', 'biodatas.*')
+                ->select('extrakulikulers.nama_extra', 'extrakulikulers.id', 'biodatas.*', 'user_extras.p')
                 ->where('extrakulikulers.id', '=', $request->filter)
                 ->get();
         if($request->filter == "all") {
@@ -58,11 +70,12 @@ class DashboardController extends Controller
             $datas = DB::table('extrakulikulers')
                 ->join('user_extras', 'extrakulikulers.id', '=', 'user_extras.extrakulikuler_id')
                 ->join('biodatas', 'user_extras.biodata_id', '=', 'biodatas.id')
-                ->select('extrakulikulers.nama_extra', 'extrakulikulers.id', 'biodatas.*')
+                ->select('extrakulikulers.nama_extra', 'extrakulikulers.id', 'biodatas.*', 'user_extras.p')
                 ->get();
         }
         return view('dashboard.userterdaftar', [
             "datas" => $datas,
+            "req" => $request->filter,
             "extra" => $extra,
             "no" => $no = 1
         ]);
@@ -84,14 +97,60 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function DeleteUser($id)
+    public function EditUser($p)
     {
-        Biodata::destroy('id', '=', $id);
-
-        return redirect('/userterdaftar');
+        $data = DB::table('user_extras')
+                    ->join('biodatas', 'user_extras.biodata_id', '=', 'biodatas.id')
+                    ->join('extrakulikulers', 'user_extras.extrakulikuler_id', '=', 'extrakulikulers.id')
+                    ->select('biodatas.nama', 'user_extras.extrakulikuler_id','user_extras.p')
+                    ->where('user_extras.p', '=', $p)
+                    ->first();
+        $extra = DB::table('extrakulikulers')->select('extrakulikulers.nama_extra', 'extrakulikulers.id')->get();
+        return view('dashboard.edituserterdaftar', [
+            "data" => $data,
+            "extra" => $extra
+        ]);
     }
 
-    public function  Extra()
+    public function EditUserTerdaftar(Request $request, $p)
+    {
+        $validateData = $request->validate([
+            "extra" => ['required'],
+        ]);
+        $e = DB::table("user_extras")->where("p",$p)->where("extrakulikuler_id",$request->extra)->count();
+        $idUser = DB::table("user_extras")->where("p",$p)->first();
+        $es = DB::table("user_extras")->where("extrakulikuler_id",$request->extra)->where("biodata_id",$idUser->biodata_id)->count();
+        
+        if ($e > 0) {
+            Alert::alert()->success('Data Sudah Ada');
+            return redirect('/userterdaftar');
+
+           
+        }elseif($es > 0){
+            Alert::alert()->success('Data Sudah Ada');
+
+            return redirect('/userterdaftar');
+            }else{
+
+            DB::table('user_extras')->where('p', $p)->update([
+                "extrakulikuler_id" => $request->extra
+            ]);
+    
+            Alert::alert()->success('Data Berhasil Di Edit');
+    
+            return redirect('/userterdaftar');
+        }
+       
+    }
+
+    public function DeleteUser($p)
+    {
+        DB::table('user_extras')->where('p', $p)->delete();
+
+        return redirect()->back();
+    }
+
+    public function Extra()
     {
         $category = DB::table('extrakulikulers')
                     ->join('categories', 'extrakulikulers.category_id', '=', 'categories.id')
@@ -159,7 +218,9 @@ class DashboardController extends Controller
         $i = UserExtra::where("biodata_id",$id)->where("extrakulikuler_id",$request->extra)->get();
     //    dd($i);
         if (count($i) > 0) {
-                return redirect()->back()->with("error","data sudah ada");
+                    Alert::alert()->error('Data Sudah Terdaftar');
+
+                return redirect()->back();
         }
 
         UserExtra::create([
@@ -171,9 +232,5 @@ class DashboardController extends Controller
          
     }
 
-    public function ExtraPost(Request $request)
-    {
-        dd("a");
-    }
 
 }
