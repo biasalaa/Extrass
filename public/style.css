@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --main-color: #00bd55;
+}
+
+.tittle {
+  font-family: "Lemon", cursive;
+  color: white;
+}
+
+.navbar {
+  z-index: 1000;
+}
+
+.navbar.active {
+  background: rgb(0, 0, 0);
+  transition: 1s;
+}
+
+.boot {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.boot2 {
+  color: black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2px;
+}
+
+.hero .btn {
+  background-color: #c7d36f;
+}
+
+.jumbotron span {
+  color: #00bd55;
+}
+
+.extra .organisasi .active {
+  background-color: #00bd55;
+  color: white;
+}
+
+.extra img {
+  width: 250px;
+  height: 180px;
+}
+
+.nav-item .active {
+  background-color: #00bd55;
+}
+
+.about-page {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-container {
+  position: absolute;
+  display: flex;
+  width: 75%;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+}
+
+.about-row {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.about-image {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+}
+
+.about-image:nth-child(even) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+}
+
+.about-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-dialog {
+  max-width: 100% !important;
+  height: 100vh;
+  margin: 0;
+}
+
+.modal-content {
+  min-height: 100vh;
+}
+
+@media (max-width: 576px) {
+  .img-card {
+    height: auto !important;
+  }
+}
+
+footer {
+  padding: 50px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+footer span {
+  color: rgb(159, 159, 159);
+  font-size: 13px;
+  padding: 10px;
+}
+
+footer .content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+footer .content .menu .footer-link {
+  background-color: transparent;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: rgb(159, 159, 159);
+  transition: 0.5s;
+}
+footer .content .menu .footer-link:hover {
+  color: white;
+}
+footer .line {
+  width: 100%;
+  height: 2px;
+  background-color: rgb(159, 159, 159);
+  margin: 15px;
+  padding: 0;
+}
