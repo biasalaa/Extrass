@@ -58,7 +58,7 @@
             <div class="about-row" id="about">
                 <h3><b>Tentang <span style="color:#C7D36F ;">Extrakulikuler</span></b></h3>
                 <p>Kegiatan ekstrakurikuler atau ekskul adalah kegiatan tambahan yang dilakukan di luar jam pelajaran yang dilakukan baik di sekolah atau di luar sekolah dengan tujuan untuk mendapatkan tambahan pengetahuan, keterampilan dan wawasan serta membantu membentuk karakter peserta didik sesuai dengan minat dan bakat masing-masing.
-</p>
+                </p>
             </div>
         </div>
     </section>
@@ -159,9 +159,9 @@
     </section>
 
     <section class="py-5" id="contact">
-        <div class="  jumbotron jumbotron-fluid" >
+        <div class="  jumbotron jumbotron-fluid">
             <div class="container">
-            <!-- <div class="d-flex">
+                <!-- <div class="d-flex">
                <div class="col">
                <i class="fa-solid fa-location-dot"></i> <h5>Jln Imam Bonjol</h5>
                </div>
@@ -171,81 +171,81 @@
             </div> -->
                 <div class="row  align-items-center">
                     <div class=" d-sm-block d-none col-sm-6 ">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.783789797221!2d113.8364482148539!3d-7.917639281010574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6dcb914a78cff%3A0xc529d84253821bd1!2sSMKN%201%20Bondowoso!5e0!3m2!1sid!2sid!4v1662532299324!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.783789797221!2d113.8364482148539!3d-7.917639281010574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6dcb914a78cff%3A0xc529d84253821bd1!2sSMKN%201%20Bondowoso!5e0!3m2!1sid!2sid!4v1662532299324!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="col-sm-6">
-                    <h3><b>Contact <span style="color:00BD55;">Us</span> </b></h3> <br> <br>
-                <form action="/contact" method="post">
-                    @csrf
-                    <div class="mb-3 form-group">
-                        <label  for="" class="text-black">Nama</label>
-                        <input type="text" name="nama" class="form-control">
-                        @error('nama')
-                             <small style="color: red;">
-                                {{$message}}
-                        </small>
-                        @enderror
+                        <h3><b>Contact <span style="color:00BD55;">Us</span> </b></h3> <br> <br>
+                        <form action="/contact" method="post">
+                            @csrf
+                            <div class="mb-3 form-group">
+                                <label for="" class="text-black">Nama</label>
+                                <input type="text" name="nama" class="form-control">
+                                @error('nama')
+                                <small style="color: red;">
+                                    {{$message}}
+                                </small>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 form-group">
+                                <label for="" class="text-black">Email</label>
+                                <input type="email" name="email" class="form-control">
+                                @error('email')
+                                <small style="color: red;">
+                                    {{$message}}
+                                </small>
+                                @enderror
+                            </div>
+                            <div class="mb-3 form-group">
+                                <label for="" class="text-black">Message</label>
+                                <textarea class="form-control" name="message"></textarea>
+                                @error('message')
+                                <small style="color: red;">
+                                    {{$message}}
+                                </small>
+                                @enderror
+                            </div>
+                            <button type="submit" style="background-color:#C7D36F; " class="btn text-white">Send</button>
+                        </form>
                     </div>
-                    
-                    <div class="mb-3 form-group">
-                        <label for="" class="text-black">Email</label>
-                        <input type="email" name="email"  class="form-control">
-                        @error('email')
-                             <small style="color: red;">
-                                {{$message}}
-                        </small>
-                        @enderror
-                    </div>
-                    <div class="mb-3 form-group">
-                        <label for="" class="text-black">Message</label>
-                        <textarea   class="form-control" name="message"></textarea>
-                        @error('message')
-                             <small style="color: red;">
-                                {{$message}}
-                        </small>
-                        @enderror
-                    </div>
-                    <button type="submit" style="background-color:#C7D36F; " class="btn text-white">Send</button>
-                </form>
-            </div>
                 </div>
 
             </div>
         </div>
     </section>
-   
+
 
 
     <footer>
-        
-            <div class="content">
-                <div class="menu">
-                    <ul class="d-flex " style="list-style: none">
-                        <li class="">
-                            <a class="footer-link" aria-current="page" href="#body">Home</a>
-                        </li>
-                        <li class="">
-                            <a class="footer-link" href="#about">About</a>
-                        </li>
-                        <li class="">
-                            <a class="footer-link" href="#extra">Extra</a>
-                        </li>
-                        <li class=" me-5">
-                            <a class="footer-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <span class="line"></span>
-                <span id="footer">
-                    2022 copyright extrass SMK NEGERI 1 BONDOWOSO </span>
+
+        <div class="content">
+            <div class="menu">
+                <ul class="d-flex " style="list-style: none">
+                    <li class="">
+                        <a class="footer-link" aria-current="page" href="#body">Home</a>
+                    </li>
+                    <li class="">
+                        <a class="footer-link" href="#about">About</a>
+                    </li>
+                    <li class="">
+                        <a class="footer-link" href="#extra">Extra</a>
+                    </li>
+                    <li class=" me-5">
+                        <a class="footer-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
             </div>
-            </div>
+            <span class="line"></span>
+            <span id="footer">
+                2022 copyright extrass SMK NEGERI 1 BONDOWOSO </span>
+        </div>
+        </div>
     </footer>
 
 
 
     <!-- <img src="img/p.png" alt=""> -->
-    
+
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="script.js"></script>
 </body>
