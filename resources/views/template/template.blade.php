@@ -49,6 +49,7 @@
                                 @if(Auth::user()->role == "user")
                                 <li>
                                     <a href="/editprofil/{{ Auth::user()->id }}">Edit Profil</a>
+                                    <a href="/">Kembali Ke Home</a>
                                 </li>
                                 @endif
                                 <li><a href="/logout"><i class="material-icons">power_settings_new</i> Logout</a></li>

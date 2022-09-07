@@ -234,7 +234,7 @@ class DashboardController extends Controller
 
     public function editProfil()
     {
-        $data = DB::table("biodatas")->first();
+        $data = DB::table("biodatas")->where('id', Auth::user()->id )->first();
         return view('dashboard.editprofil',compact("data"));
     }
     public function updateProfil(Request $request,$id)
@@ -244,7 +244,7 @@ class DashboardController extends Controller
             "nohp"=>$request->hp,
             "alamat"=>$request->alamat
         ]);
-return redirect("/dashboard");
+        return redirect("/dashboard");
     }
 
 

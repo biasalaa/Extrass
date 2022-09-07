@@ -15,7 +15,7 @@
         <option value="{{$i->id}}" style="color: white;">{{$i->nama_extra}}</option>
         @endforeach
     </select>
-    <button class="btn" type="submit">Ikuti extra</button>
+    <button class="btn" type="submit" style="margin-left: 30px;">Ikuti extra</button>
 </form>
 
 <br>

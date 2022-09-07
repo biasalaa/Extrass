@@ -44,6 +44,7 @@
                     @if (Auth::check() == true)
                     {{-- <p>{{ $data->nama }}</p> --}}
                     <li><button type="button" class="btn boot"><a href="/logout" style="text-decoration: none; color: white;">Logout</a></button></li>
+                    <li><button style="margin-left:20px;" type="button" class="btn boot"><a href="/dashboard" style="text-decoration: none; color: white;">Dashboard</a></button></li>
                     @endif
                 </ul>
             </div>

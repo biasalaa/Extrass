@@ -23,7 +23,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 // landingpage route    
-Route::get('/', [LandingController::class, 'index'])->middleware('guest');
+Route::get('/', [LandingController::class, 'index']);
 
 // authentication route
 Route::get('/login', [AuthController::class, 'LoginUI'])->middleware('guest')->name('login');
@@ -78,4 +78,5 @@ Route::get('/contact/{id}', [ContactController::class, 'show'])->middleware(['au
 Route::post('/contact/{id}', [ContactController::class, 'destroy'])->middleware(['auth', 'admin']);
 
 Route::get('editprofil/{id}', [DashboardController::class, 'editProfil'])->middleware(['auth', 'user']);
+
 Route::post('editprofil/{id}', [DashboardController::class, 'updateProfil'])->middleware(['auth', 'user']);
