@@ -8,16 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto ">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#body">Home</a>
+                    <a class="nav-link" aria-current="page" href="#body">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href="#about">Info</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#extra">Extra</a>
                 </li>
                 <li class="nav-item me-5">
-                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link" href="#contact">Kontak</a>
                 </li>
 
                 @if (Auth::check() == false)
@@ -27,7 +27,7 @@
                 @if (Auth::check() == true)
                 {{-- <p>{{ $data->nama }}</p> --}}
                 <li style="margin-right:15px;"><a href="/dashboard" class="btn boot "><i style="color: white;" class="fas fa-user"></i></a></li>
-                <li><a href="/logout" class="btn boot">Logout</a></li>
+                <li><a href="/logout" class="btn boot">Keluar</a></li>
 
                 @endif
             </ul>

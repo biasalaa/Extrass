@@ -25,8 +25,8 @@
             <div class="container ">
                 <div class="row d-flex  align-items-center">
                     <div class="col-sm-6">
-                        <h4 class="display-6 text-black m-0"><span>Come on</span></h4>
-                        <h1 class="display-3 fw-bold text-white"><b>EXTRA WITH US</b></h1>
+                        <h4 class="display-6 text-black m-0"><span>Ayooo</span></h4>
+                        <h2 class="display-4 fw-bold text-white"><b>EXTRA DENGAN KAMI</b></h2>
                         <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat a
                             tempora
                             soluta, voluptatem recusandae nesciunt adipisci at exercitationem tempore earum?
@@ -174,7 +174,7 @@
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.783789797221!2d113.8364482148539!3d-7.917639281010574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6dcb914a78cff%3A0xc529d84253821bd1!2sSMKN%201%20Bondowoso!5e0!3m2!1sid!2sid!4v1662532299324!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="col-sm-6">
-                        <h3><b>Contact <span style="color:00BD55;">Us</span> </b></h3> <br> <br>
+                        <h3><b>Kontak <span style="color:00BD55;">Kami</span> </b></h3> <br> <br>
                         <form action="/contact" method="post">
                             @csrf
                             <div class="mb-3 form-group">
@@ -197,7 +197,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3 form-group">
-                                <label for="" class="text-black">Message</label>
+                                <label for="" class="text-black">Pesan</label>
                                 <textarea class="form-control" name="message"></textarea>
                                 @error('message')
                                 <small style="color: red;">
@@ -205,7 +205,7 @@
                                 </small>
                                 @enderror
                             </div>
-                            <button type="submit" style="background-color:#C7D36F; " class="btn text-white">Send</button>
+                            <button type="submit" style="background-color:#C7D36F; " class="btn text-white">Kirim</button>
                         </form>
                     </div>
                 </div>

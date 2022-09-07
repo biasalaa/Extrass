@@ -46,7 +46,7 @@ class categoryController extends Controller
             "nama_category"=>$request->nama_category
         ]);
 
-        Alert::alert()->success('Data Berhasil Di Tambah');
+        Alert::success('Data Berhasil Di Tambah');
 
         return redirect()->back();
     }
