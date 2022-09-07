@@ -80,8 +80,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <label for="password" style="color: white;position:relative;" >foto</label>
-                                            <input id="password" type="file" value="{{old('file')}}" class="validate" required name="file" style="color: white;">
+                                            <label for="file" style="color: white;position:relative;" ><img src="{{asset('img/basket.jpg')}}" id="img" class="img-fluid w-100" style="width: 100%;" alt=""></label>
+                                            <input id="file" type="file" value="{{old('file')}}"  class="validate d-none" required name="file" style="color: white;display:none;">
                                             @error('file')
                                             <small style="color: red;">
                                                 {{$message}}
@@ -116,12 +116,23 @@
             </div>
         </section>
     </div>
+
+
+    
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('dist/js/materialize.min.js') }}"></script>
     <script type="text/javascript">
         $(function() {
             $(".preloader").fadeOut();
         });
+
+        let file = document.querySelector("#file")
+        let img = document.querySelector("#img")
+        file.addEventListener("change",function(e){
+            console.log(e.target.files)
+            
+        })
+
     </script>
 </body>
 
