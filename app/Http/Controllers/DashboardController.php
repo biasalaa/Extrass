@@ -18,7 +18,7 @@ class DashboardController extends Controller
     {
         $id = auth()->user()->Biodata->id;
         $biodata = Biodata::where('id', '>', 1)->count();
-        $extra = Extrakulikuler::all()->count();
+        $extra = Extrakulikuler::all();
         $extraAll = DB::table("extrakulikulers as ex")
         ->select("ex.*")
         ->selectRaw("count(user_extras.p) as total")
@@ -235,13 +235,29 @@ class DashboardController extends Controller
         $data = DB::table("biodatas")->where('id', Auth::user()->id)->first();
         return view('dashboard.editprofil', compact("data"));
     }
-    public function updateProfil(Request $request, $id)
+    public function updateProfil(Request $request)
     {
 
-        $request->validate([]);
-        DB::table("biodatas")->where("id", $id)->update([
+        $idB = auth()->user()->biodata_id;
+        $id = auth()->user()->id;
+        $request->validate([
+            'nama' => ['required','string',"alpha"],
+            'nohp' => ['required',"digits:12"],
+            // 'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'alamat' => ['required',"max:100"]
+        ]);
+        // $nama = $request->file('file')->getClientOriginalName();
+   
+
+        // $request->file->move(public_path('img'),$nama);
+        
+        //  DB::table('users')->where('id',$id)->update([
+        //      "foto"=>$nama,
+        //  ]);
+
+        DB::table("biodatas")->where("id", $idB)->update([
             "nama" => $request->nama,
-            "nohp" => $request->hp,
+            "nohp" => $request->nohp,
             "alamat" => $request->alamat
         ]);
 

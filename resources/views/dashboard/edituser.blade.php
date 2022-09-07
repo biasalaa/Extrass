@@ -1,7 +1,9 @@
 @extends('template.template')
 
 @section('main')
-    <div class="container">
+<div class="card">
+
+    <div class="container-fluid ">
         <h1 style="margin-bottom: 50px;">Edit User</h1>
         <form action="/userregister/{{ $data->id }}" method="POST" class="form-control">
             @csrf
@@ -34,4 +36,5 @@
             <button type="submit" class="btn cyan waves-effect waves-light" style="margin-top: 30px;">Submit</button>
         </form>
     </div>
+</div>
 @endsection

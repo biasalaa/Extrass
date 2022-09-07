@@ -116,7 +116,11 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        
+    </div>
+</div>
+<div class="container-fluid mt-sm--6">
+<div class="card">
             <!-- Card header -->
             <div class="card-header">
                 <!-- Surtitle -->
@@ -132,7 +136,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
 
@@ -258,15 +261,21 @@
 
 
 <script>
-    var BarsChart = function() {
-        var a = $("#chart-bars");
+    function BarsChart() {
+        var a = document.querySelector("#chart-bars");
+        let data = JSON.parse(`<?= $extra ?>`)
+        console.log(data)
+        let labelData = []
+        data.forEach(e => {
+            labelData.push(e.nama_extra)
+        });
+        console.log(labelData)
 
-        let listData = []
         a.length && function(a) {
             var t = new Chart(a, {
                 type: "bar",
                 data: {
-                    labels: ["Jul", "merah", "Sep", "Oct", "Nov", "Dec"],
+                    labels: labelData,
                     datasets: [{
                         label: "Sales",
                         data: [25, 20, 30, 22, 17, 29]
@@ -275,8 +284,39 @@
             });
             a.data("chart", t)
         }(a)
-    }();
+    };
     BarsChart()
+    var $chart = $('#chart-bars');
+
+
+	//
+	// Methods
+	//
+
+	// Init chart
+	function initChart($chart) {
+
+		// Create chart
+		var ordersChart = new Chart($chart, {
+			type: 'bar',
+			data: {
+				labels: ['Jul', 'merah', 'Sep', 'Oct', 'Nov', 'Dec'],
+				datasets: [{
+					label: 'Sales',
+					data: [25, 20, 30, 22, 17, 29]
+				}]
+			}
+		});
+
+		// Save to jQuery object
+		$chart.data('chart', ordersChart);
+	}
+
+
+	// Init chart
+	if ($chart.length) {
+		initChart($chart);
+	}
 </script>
 @elseif(Auth::user()->role == 'user')
 <div class="header bg-primary pb-6">
