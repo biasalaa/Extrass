@@ -16,9 +16,16 @@ class DashboardController extends Controller
 
     public function dashboard()
     {
+        $id = auth()->user()->Biodata->id;
         $biodata = Biodata::where('id', '>', 1)->count();
         $extra = Extrakulikuler::all()->count();
-        $extraAll = Extrakulikuler::all();
+        $extraAll = DB::table("extrakulikulers as ex")
+        ->select("ex.*")
+        ->selectRaw("count(user_extras.p) as total")
+        ->join("user_extras","ex.id","user_extras.extrakulikuler_id")
+        ->groupBy("user_extras.p")
+        ->where("biodata_id",$id)
+        ->get();
 
         return view('dashboard.dashboard', [
             "biodata" => $biodata,
