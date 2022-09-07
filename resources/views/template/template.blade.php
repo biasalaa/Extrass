@@ -24,7 +24,7 @@
             </div>
         </div>
         <header class="topbar">
-            <nav>
+            <nav style="background-color:#273146;">
                 <div class=" nav-wrapper">
                     <a href="javascript:void(0)" class="brand-logo">
                         <span class="icon">

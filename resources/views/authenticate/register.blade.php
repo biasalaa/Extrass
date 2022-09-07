@@ -36,7 +36,7 @@
                                     @csrf
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="name" type="text" class="validate" required name="nama" style="color: white;">
+                                            <input id="name" type="text" value="{{old('nama')}}" class="validate" required name="nama" style="color: white;">
                                             <label for="name" style="color: white;">Nama</label>
                                             @error('nama')
                                             <small style="color: red;">
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="nohp" type="text" class="validate" required name="nohp" style="color: white;">
+                                            <input id="nohp" type="text" value="{{old('nohp')}}" class="validate" required name="nohp" style="color: white;">
                                             <label for="nohp" style="color: white;">Nomor Handphone</label>
                                             @error('nohp')
                                             <small style="color: red;">
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="username" type="text" class="validate" required name="username" style="color: white;">
+                                            <input id="username" type="text" value="{{old('username')}}" class="validate" required name="username" style="color: white;">
                                             <label for="username" style="color: white;">Username</label>
                                             @error('username')
                                             <small style="color: red;">
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="password" type="password" class="validate" required name="password" style="color: white;">
+                                            <input id="password" type="password" value="{{old('password')}}" class="validate" required name="password" style="color: white;">
                                             <label for="password" style="color: white;">Password</label>
                                             @error('password')
                                             <small style="color: red;">
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea" name="alamat" style="color: white;"></textarea>
+                                            <textarea id="textarea1" class="materialize-textarea" name="alamat" style="color: white;" >{{old('alamat')}}</textarea>
                                             <label for="textarea1" style="color: white;">Alamat</label>
                                             @error('alamat')
                                             <small style="color: red;">

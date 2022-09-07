@@ -50,7 +50,7 @@ class extraController extends Controller
     {
         $validatedData = $request->validate([
             'nama_extra' => ['required'],
-            'desc' => ['required'],
+            'desc' => ['required',"min:100"],
             'pg' => ['required'],
             'category' => ['required'],
             'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -116,10 +116,10 @@ class extraController extends Controller
     {
         $validatedData = $request->validate([
             'nama_extra' => ['required'],
-            'desc' => ['required'],
+            'desc' => ['required',"max:100"],
             'pg' => ['required'],
             'category' => ['required'],
-            'file' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
            ]);
 
 
