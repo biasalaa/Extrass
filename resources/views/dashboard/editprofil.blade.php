@@ -24,7 +24,6 @@
                         <label for="pg">penanggung jawab</label>
                     </div>
                 </div>
-                <button class="modal-action modal-close btn" type="button">close</button>
                 <button class="btn cyan waves-effect waves-light" type="submit">simpan</button>
             </form>
         </div>

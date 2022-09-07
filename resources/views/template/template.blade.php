@@ -43,12 +43,12 @@
                                     <div class="dw-user-box">
                                         <div class="u-img"><i style="color: white;" class="fas fa-user"></i></div>
                                         <div class="u-text">
-                                            <h4>{{ Auth::user()->username }}</h4>
+                                            <h4>{{ Auth::user()->Biodata->nama   }}</h4>
                                         </div>
                                 </li>
                                 @if(Auth::user()->role == "user")
                                 <li>
-                                    <a href="/editprofil/{{ Auth::user()->id }}">Edit Profil</a>
+                                    <a href="/editprofil/{{ Auth::user()->id }}"> <i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
                                     <a href="/">Kembali Ke Home</a>
                                 </li>
                                 @endif

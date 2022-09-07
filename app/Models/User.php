@@ -17,6 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+
+    Public function Biodata()
+    {
+        return $this->belongsTo(Biodata::class);
+    }
     protected $guarded = ['id'];
 
     /**

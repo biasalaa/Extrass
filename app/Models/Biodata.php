@@ -9,5 +9,9 @@ class Biodata extends Model
 {
     use HasFactory;
 
+    public function User()
+    {
+        return $this->hasOne(User::class);
+    }
     protected $guarded = ['id'];
 }

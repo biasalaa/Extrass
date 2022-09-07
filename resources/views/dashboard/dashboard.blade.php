@@ -38,7 +38,7 @@
 </div>
 @elseif(Auth::user()->role == 'user')
 <?php
-$a=array("warning-gradien","success-gradient","info-gradient","primary-gradient");
+$a=array("warning-gradien","success-gradient","info-gradient","primary-gradient");  
 $random_keys=array_rand($a,4);
 $i = 1;
 ?>
