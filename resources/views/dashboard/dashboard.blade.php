@@ -37,6 +37,7 @@
     </div>
 </div>
 @elseif(Auth::user()->role == 'user')
+<h3><b>Extrakurikuler</b></h3>
 <?php
 $a=array("warning-gradien","success-gradient","info-gradient","primary-gradient");  
 $random_keys=array_rand($a,4);
@@ -54,10 +55,10 @@ $i = 1;
                 <div class="d-flex no-block align-items-center">
                     <div>
                         <h2 class="white-text m-b-5">{{ $s->dataUser }} </h2>
-                        <h6 class="white-text op-5">{{$s->nama_extra}}</h6>
+                        <h6 class="white-text op-5">Mendaftar</h6>
                     </div>
                     <div class="ml-auto">
-                        <span class="white-text display-6"><i class="material-icons">receipt</i></span>
+                        <span class="white-text">{{$s->nama_extra}}</span>
                     </div>
                 </div>
             </div>

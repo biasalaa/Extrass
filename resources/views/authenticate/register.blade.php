@@ -26,10 +26,10 @@
                             <h1 class="font-medium m-t-40" style="color: white;">Welcome to the <span class="font-medium" style="color: #FCF9C6;">Extrass</span></h1>
                         </div>
                     </div>
-                    <div class="auth-box auth-sidebar" style="background-color:#E0DECA ;">
+                    <div class="auth-box auth-sidebar" style="background-color:#1F2738 ;">
                         <div id="loginform">
                             <div class="p-l-10">
-                                <h3 class="font-medium m-b-0 m-t-40 " style="color: black ;">Register</h3>
+                                <h3 class="font-medium m-b-0 m-t-40 " style="color: white ;">Register</h3>
                             </div>
                             <div class="row">
                                 <form class="col s12" action="/registration" method="post">
@@ -37,7 +37,7 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="name" type="text" class="validate" required name="nama" style="color: white;">
-                                            <label for="name" style="color: black;">Nama</label>
+                                            <label for="name" style="color: white;">Nama</label>
                                             @error('nama')
                                             <small style="color: red;">
                                                 {{$message}}
@@ -48,7 +48,7 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="nohp" type="text" class="validate" required name="nohp" style="color: white;">
-                                            <label for="nohp" style="color: black;">Nomor Handphone</label>
+                                            <label for="nohp" style="color: white;">Nomor Handphone</label>
                                             @error('nohp')
                                             <small style="color: red;">
                                                 {{$message}}
@@ -59,7 +59,7 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="username" type="text" class="validate" required name="username" style="color: white;">
-                                            <label for="username" style="color: black;">Username</label>
+                                            <label for="username" style="color: white;">Username</label>
                                             @error('username')
                                             <small style="color: red;">
                                                 {{$message}}
@@ -70,7 +70,7 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="password" type="password" class="validate" required name="password" style="color: white;">
-                                            <label for="password" style="color: black;">Password</label>
+                                            <label for="password" style="color: white;">Password</label>
                                             @error('password')
                                             <small style="color: red;">
                                                 {{$message}}
@@ -81,7 +81,7 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <textarea id="textarea1" class="materialize-textarea" name="alamat" style="color: white;"></textarea>
-                                            <label for="textarea1" style="color: black;">Alamat</label>
+                                            <label for="textarea1" style="color: white;">Alamat</label>
                                             @error('alamat')
                                             <small style="color: red;">
                                                 {{$message}}
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="row m-t-40">
                                         <div class="col s12">
-                                            <button class="btn-large w100" style="background-color: #FCF9C6; color: black;" type="submit">Sign Up</button>
+                                            <button class="btn-large w100" style="background-color: #FCF9C6; color: #1F2738;" type="submit">Sign Up</button>
                                         </div>
                                     </div>
                                 </form>

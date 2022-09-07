@@ -203,6 +203,7 @@ class DashboardController extends Controller
         $id = auth()->user()->biodata_id;
         $extra = DB::table("extrakulikulers")->get();
         $d = DB::table("user_extras")->join("extrakulikulers","user_extras.extrakulikuler_id","extrakulikulers.id")->join("categories","extrakulikulers.category_id","categories.id")->where("biodata_id",$id)->get();
+        
         return view("dashboard.extraPil",[
             "data" => $d,
             "extra" => 
@@ -221,13 +222,18 @@ class DashboardController extends Controller
                     Alert::alert()->error('Data Sudah Terdaftar');
 
                 return redirect()->back();
-        }
+        }else{
 
         UserExtra::create([
             "biodata_id"=>$id,
             "extrakulikuler_id"=>$request->extra
 
         ]);
+
+        }
+
+        Alert::alert()->success('Berhasil Mendaftar');
+
         return redirect()->back();
          
     }
@@ -239,11 +245,18 @@ class DashboardController extends Controller
     }
     public function updateProfil(Request $request,$id)
     {
+
+        $request->validate([
+            
+        ]);
         DB::table("biodatas")->where("id",$id)->update([
             "nama"=>$request->nama,
             "nohp"=>$request->hp,
             "alamat"=>$request->alamat
         ]);
+
+        Alert::alert()->success('Berhasil Di Simpan');
+
         return redirect("/dashboard");
     }
 

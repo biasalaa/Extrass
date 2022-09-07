@@ -44,9 +44,8 @@ class ContactController extends Controller
         $validatedData = $request->validate([
             "nama" => ['required'],
             "email" => ['required', 'email'],
-            "message" => ['required']
+            "message" => ['required',"min:100"]
         ]);
-
         Contact::create($validatedData);
 
         Alert::alert()->success('Data Berhasil Dikirim');

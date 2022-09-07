@@ -75,7 +75,7 @@ Route::get('/contact', [ContactController::class, 'index'])->middleware(['auth',
 
 Route::get('/contact/{id}', [ContactController::class, 'show'])->middleware(['auth', 'admin']);
 
-Route::post('/contact/{id}', [ContactController::class, 'destroy'])->middleware(['auth', 'admin']);
+Route::delete('/contact/{id}', [ContactController::class, 'destroy'])->middleware(['auth', 'admin']);
 
 Route::get('editprofil/{id}', [DashboardController::class, 'editProfil'])->middleware(['auth', 'user']);
 

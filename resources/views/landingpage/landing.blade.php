@@ -9,49 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css">
+    <link rel="stylesheet" href="{{ asset('asset/icon/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css')}}">
 </head>
 
 <body id="body">
 
-    <nav class="navbar navbar-expand-lg p-sm-1 p-1 position-fixed w-100 navbar-dark">
-        <div class="container ">
-            <a class="tittle navbar-brand " href="#">Extrass</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto ">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#body">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#extra">Extra</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a class="nav-link" href="#footer">Contact</a>
-                    </li>
-
-                    @if (Auth::check() == false)
-                    <li><button type="button" class="btn "><a href="/login" style="text-decoration: none; color: white;">Login</a></button></li>
-                    <li><button type="button" class="btn boot ms-2"><a href="/register" style="text-decoration: none; color: white;">Daftar</a></button></li>
-                    @endif
-                    @if (Auth::check() == true)
-                    {{-- <p>{{ $data->nama }}</p> --}}
-                    <li><button type="button" class="btn boot"><a href="/logout" style="text-decoration: none; color: white;">Logout</a></button></li>
-                    <li><button style="margin-left:20px;" type="button" class="btn boot"><a href="/dashboard" style="text-decoration: none; color: white;">Dashboard</a></button></li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
+    @include("component.navbar")
 
 
     <section class="hero" style=" background-image:url(img/extra.png) ; background-size:
@@ -60,7 +25,7 @@
             <div class="container ">
                 <div class="row d-flex  align-items-center">
                     <div class="col-sm-6">
-                        <h4 class="display-6 text-white m-0"><span>Come on</span></h4>
+                        <h4 class="display-6 text-black m-0"><span>Come on</span></h4>
                         <h1 class="display-3 fw-bold text-white"><b>EXTRA WITH US</b></h1>
                         <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat a
                             tempora
@@ -80,7 +45,7 @@
         <img src="img/futsal.jpg" class="img-fluid" alt="">
     </div> -->
 
-    <section class="about-page">
+    <section id="about" class="about-page">
         <div class="about-container">
             <div class="about-row">
                 <div class="about-image">
@@ -92,10 +57,8 @@
             </div>
             <div class="about-row" id="about">
                 <h3><b>Tentang <span style="color:#C7D36F ;">Extrakulikuler</span></b></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt qui laborum
-                    consequuntur odit natus
-                    tenetur blanditiis sed, magnam pariatur ipsam repudiandae vero doloribus dolore assumenda culpa
-                    odio? </p>
+                <p>Kegiatan ekstrakurikuler atau ekskul adalah kegiatan tambahan yang dilakukan di luar jam pelajaran yang dilakukan baik di sekolah atau di luar sekolah dengan tujuan untuk mendapatkan tambahan pengetahuan, keterampilan dan wawasan serta membantu membentuk karakter peserta didik sesuai dengan minat dan bakat masing-masing.
+</p>
             </div>
         </div>
     </section>
@@ -125,15 +88,6 @@
 
                     @endforeach
                 </ul>
-                @php
-                $categories = [];
-                foreach ($category as $c) {
-                $categories[] = $c->id;
-                }
-                $no = 1;
-
-                // dd($categories);
-                @endphp
 
 
 
@@ -149,14 +103,19 @@
                                 @foreach ($extra as $item)
                                 @if ($item->category_id == $d->id)
 
-                                <div class="col-lg-3 col-sm-6 ">
+                                <div class="col-lg-3 col-sm-6 mb-3 ">
                                     <div class="card p-1">
                                         <img src="img/{{ $item->foto }}" class="w-100 img-fluid img-card" alt="...">
                                         <div class="card-body">
                                             <h4><b>{{ $item->nama_extra }}</b></h4>
                                             <p class="card-text">{{ Str::limit($item->deskripsi, 70) }}</p>
                                             <div class="d-flex gap-3 justify-content-end">
+                                                @if(auth()->check())
+                                                <button type="button" class="btn boot ms-2"><a href="/pilextra" style="text-decoration: none; color: white;">Daftar</a></button>
+
+                                                @else
                                                 <button type="button" class="btn boot ms-2"><a href="/register" style="text-decoration: none; color: white;">Daftar</a></button>
+                                                @endif
                                                 <a class="btn m-0 " data-bs-target="#v{{$item->id}}" data-bs-toggle="modal" href="" style="margin-left:150px; background-color:#C7D36F;">info</a>
                                             </div>
                                         </div>
@@ -199,16 +158,27 @@
         </div>
     </section>
 
-
-
-    <footer>
-        <div class="row">
-            <div class="col-6">
+    <section class="py-5" id="contact">
+        <div class="  jumbotron jumbotron-fluid" >
+            <div class="container">
+            <!-- <div class="d-flex">
+               <div class="col">
+               <i class="fa-solid fa-location-dot"></i> <h5>Jln Imam Bonjol</h5>
+               </div>
+               <div class="col d-flex">
+               <h5> <i class="fa-brands fa-whatsapp"></i> 08108181</h5>
+               </div>
+            </div> -->
+                <div class="row  align-items-center">
+                    <div class=" d-sm-block d-none col-sm-6 ">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.783789797221!2d113.8364482148539!3d-7.917639281010574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6dcb914a78cff%3A0xc529d84253821bd1!2sSMKN%201%20Bondowoso!5e0!3m2!1sid!2sid!4v1662532299324!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="col-sm-6">
+                    <h3><b>Contact <span style="color:00BD55;">Us</span> </b></h3> <br> <br>
                 <form action="/contact" method="post">
                     @csrf
-                    <h2 class="text-white">Contact Us</h2>
                     <div class="mb-3 form-group">
-                        <label  for="" class="text-white">Nama</label>
+                        <label  for="" class="text-black">Nama</label>
                         <input type="text" name="nama" class="form-control">
                         @error('nama')
                              <small style="color: red;">
@@ -218,7 +188,7 @@
                     </div>
                     
                     <div class="mb-3 form-group">
-                        <label for="" class="text-white">Email</label>
+                        <label for="" class="text-black">Email</label>
                         <input type="email" name="email"  class="form-control">
                         @error('email')
                              <small style="color: red;">
@@ -227,7 +197,7 @@
                         @enderror
                     </div>
                     <div class="mb-3 form-group">
-                        <label for="" class="text-white">Message</label>
+                        <label for="" class="text-black">Message</label>
                         <textarea   class="form-control" name="message"></textarea>
                         @error('message')
                              <small style="color: red;">
@@ -235,10 +205,19 @@
                         </small>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" style="background-color:#C7D36F; " class="btn text-white">Send</button>
                 </form>
             </div>
-            <div class="col-6">
+                </div>
+
+            </div>
+        </div>
+    </section>
+   
+
+
+    <footer>
+        
             <div class="content">
                 <div class="menu">
                     <ul class="d-flex " style="list-style: none">
@@ -252,7 +231,7 @@
                             <a class="footer-link" href="#extra">Extra</a>
                         </li>
                         <li class=" me-5">
-                            <a class="footer-link" href="#footer">Contact</a>
+                            <a class="footer-link" href="#contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -261,7 +240,6 @@
                     2022 copyright extrass SMK NEGERI 1 BONDOWOSO </span>
             </div>
             </div>
-        </div>
     </footer>
 
 

@@ -24,7 +24,7 @@
             </div>
         </div>
         <header class="topbar">
-            <nav style=" background-color:#273146 ;">
+            <nav>
                 <div class=" nav-wrapper">
                     <a href="javascript:void(0)" class="brand-logo">
                         <span class="icon">
@@ -96,12 +96,7 @@
                         @endif
                         @if (Auth::user()->role == 'user')
                         <li>
-                            <a href="javascript: void(0);" class="collapsible-header has-arrow"><i style="color: white;" class="fas fa-volleyball-ball"></i><span class="hide-menu">Extrakulikuler Anda</span></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="/pilextra"><i class="fas fa-basketball-ball"></i><span class="hide-menu">Daftar Extrakulikuler</span></a></li>
-                                </ul>
-                            </div>
+                            <a href="/pilextra" class="collapsible-header "><i style="color: white;" class="fas fa-volleyball-ball"></i><span class="hide-menu">Daftar Extrakurikuler</span></a>
                         </li>
                         @endif
                     </ul>

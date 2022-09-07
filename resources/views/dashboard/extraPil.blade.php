@@ -18,9 +18,6 @@
     <button class="btn" type="submit" style="margin-left: 30px;">Ikuti extra</button>
 </form>
 
-<br>
-
-<h3>Extra Yang Di Ikuti</h3>
 <table id="file_export" border="1">
     <thead>
         <tr>
