@@ -7,7 +7,7 @@
     <div class="card">
         <!-- Card header -->
         <div class="card-header">
-            <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-form">Form</button>
+            <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-form" style="width:150px ;">Tambah Data</button>
             <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                 <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
@@ -15,52 +15,71 @@
                         <div class="modal-body p-0">
 
                             <div class="card bg-secondary border-0 mb-0">
-                                <div class="card-header bg-transparent pb-5">
-                                    <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
-
-
-                                    <div class="btn-wrapper text-center">
-                                        <a href="#" class="btn btn-neutral btn-icon">
-                                            <span class="btn-inner--icon"><img src="../../assets-old/img/icons/common/github.svg"></span>
-                                            <span class="btn-inner--text">Github</span>
-                                        </a>
-                                        <a href="#" class="btn btn-neutral btn-icon">
-                                            <span class="btn-inner--icon"><img src="../../assets-old/img/icons/common/google.svg"></span>
-                                            <span class="btn-inner--text">Google</span>
-                                        </a>
-                                    </div>
-
-
+                                <div class="card-header bg-transparent">
+                                    <div class="text-muted text-center"><small>Tambah Data</small></div>
+                                    <h2 class="text-center"><b>EXTRAKURIKULER</b></h2>
                                 </div>
+
                                 <div class="card-body px-lg-5 py-lg-5">
-                                    <div class="text-center text-muted mb-4">
-                                        <small>Or sign in with credentials</small>
-                                    </div>
-                                    <form role="form">
+
+                                    <form role="form" method="POST" enctype="multipart/form-data" action="/dataextrakulikuler">
+                                        @csrf
                                         <div class="form-group mb-3">
                                             <div class="input-group input-group-merge input-group-alternative">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                                    <span class="input-group-text"></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Email" type="email">
+                                                <input class="form-control" name="nama_extra" placeholder="Nama Extra" type="text">
+                                                @error("nama_extra")
+                                                <div class="text-danger">{{$message}}</div>
+                                                @enderror
                                             </div>
                                         </div>
-                                        <div class="form-group">
+
+                                        <div class="card">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="customFileLang" name="file" lang="en">
+                                                <label class="custom-file-label" for="customFileLang">Pilih File</label>
+                                                @error("file")
+                                                <div class="text-danger">{{$message}}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mb-3">
                                             <div class="input-group input-group-merge input-group-alternative">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                                    <span class="input-group-text"></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Password" type="password">
+                                                <input class="form-control" name="pg" placeholder="Penanggung jawab" type="text">
+
+                                                @error("pg")
+                                                <div class="text-danger">{{$message}}</div>
+                                                @enderror
                                             </div>
                                         </div>
-                                        <div class="custom-control custom-control-alternative custom-checkbox">
-                                            <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                                            <label class="custom-control-label" for=" customCheckLogin">
-                                                <span class="text-muted">Remember me</span>
-                                            </label>
+
+                                        <div class="card">
+                                            <select class="form-control" name="category" data-toggle="select">
+                                                @foreach($category as $a)
+                                                <option value="{{$a->id}}">{{ $a->nama_category }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error("category")
+                                            <div class="text-danger">{{$message}}</div>
+                                            @enderror
                                         </div>
+
+                                        <div class="form-control-group">
+                                            <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" resize="none" name="desc"></textarea>
+
+                                            @error("desc")
+                                            <div class="text-danger">{{$message}}</div>
+                                            @enderror
+                                        </div>
+
                                         <div class="text-center">
-                                            <button type="button" class="btn btn-primary my-4">Sign in</button>
+                                            <button type="submit" class="btn btn-primary my-4">Tambah</button>
                                         </div>
                                     </form>
                                 </div>

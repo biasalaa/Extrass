@@ -17,16 +17,16 @@ class extraController extends Controller
     public function index()
     {
         $category = DB::table('extrakulikulers')
-                    ->join('categories', 'extrakulikulers.category_id', '=', 'categories.id')
-                    ->select('categories.nama_category', 'extrakulikulers.nama_extra', 'extrakulikulers.penanggung_jawab', 'extrakulikulers.id')
-                    ->get();
+            ->join('categories', 'extrakulikulers.category_id', '=', 'categories.id')
+            ->select('categories.nama_category', 'extrakulikulers.nama_extra', 'extrakulikulers.penanggung_jawab', 'extrakulikulers.id')
+            ->get();
 
         $c = DB::table("categories")->get();
 
         return view('dashboard.extra', [
-        "no" => $no = 1,
-        "extra" => $category,
-        "category"=>$c
+            "no" => $no = 1,
+            "extra" => $category,
+            "category" => $c
         ]);
     }
 
@@ -37,7 +37,6 @@ class extraController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -48,31 +47,37 @@ class extraController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'nama_extra' => ['required'],
             'desc' => ['required'],
             'pg' => ['required'],
             'category' => ['required'],
             'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-           ]);
-
-           $name = $request->file('file')->getClientOriginalName();
-        //    $path = $request->file('file')->store('public/img');
-
-           $request->file->move(public_path('img'),$name);
-           
-           Extrakulikuler::create([
-            "nama_extra"=>$request->nama_extra,
-            "deskripsi"=>$request->desc,
-            "foto"=>$name,
-            "penanggung_jawab"=>$request->pg,
-            "category_id"=>$request->category
         ]);
 
+        try {
+            $name = $request->file('file')->getClientOriginalName();
+            //    $path = $request->file('file')->store('public/img');
 
-        Alert::alert()->success('Data Berhasil Di Tambahkan');
+            $request->file->move(public_path('img'), $name);
 
-        return redirect()->back();
+            Extrakulikuler::create([
+                "nama_extra" => $request->nama_extra,
+                "deskripsi" => $request->desc,
+                "foto" => $name,
+                "penanggung_jawab" => $request->pg,
+                "category_id" => $request->category
+            ]);
+
+
+            Alert::alert()->success('Data Berhasil Di Tambahkan');
+
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            dd($th);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -99,7 +104,7 @@ class extraController extends Controller
         $data = DB::table('extrakulikulers')->select('extrakulikulers.*')->where('id', $id)->first();
         $category = DB::table('categories')->select('categories.*')->get();
 
-        return view("dashboard.editExtra",[
+        return view("dashboard.editExtra", [
             "data" => $data,
             "category" => $category
         ]);
@@ -120,34 +125,34 @@ class extraController extends Controller
             'pg' => ['required'],
             'category' => ['required'],
             'file' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-           ]);
+        ]);
 
 
-           if ($request->file == null) {
-            Extrakulikuler::where("id",$id)->update([
-                "nama_extra"=>$request->nama_extra,
-                "deskripsi"=>$request->desc,
-                "penanggung_jawab"=>$request->pg,
-                "category_id"=>$request->category
+        if ($request->file == null) {
+            Extrakulikuler::where("id", $id)->update([
+                "nama_extra" => $request->nama_extra,
+                "deskripsi" => $request->desc,
+                "penanggung_jawab" => $request->pg,
+                "category_id" => $request->category
             ]);
 
-        Alert::alert()->success('Data Berhasil Di Edit');
+            Alert::alert()->success('Data Berhasil Di Edit');
 
             return redirect('/dataextrakulikuler');
-           }
+        }
 
-           $name = $request->file('file')->getClientOriginalName();
+        $name = $request->file('file')->getClientOriginalName();
         //    $path = $request->file('file')->store('public/img');
 
-           $request->file->move(public_path('img'),$name);
-           
-        
-           Extrakulikuler::where("id",$id)->update([
-            "nama_extra"=>$request->nama_extra,
-            "deskripsi"=>$request->desc,
-            "foto"=>$name,
-            "penanggung_jawab"=>$request->pg,
-            "category_id"=>$request->category
+        $request->file->move(public_path('img'), $name);
+
+
+        Extrakulikuler::where("id", $id)->update([
+            "nama_extra" => $request->nama_extra,
+            "deskripsi" => $request->desc,
+            "foto" => $name,
+            "penanggung_jawab" => $request->pg,
+            "category_id" => $request->category
         ]);
 
         Alert::alert()->success('Data Berhasil Di Edit');
