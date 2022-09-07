@@ -27,7 +27,7 @@
                 @if (Auth::check() == true)
                 {{-- <p>{{ $data->nama }}</p> --}}
                 <li style="margin-right:15px;"><a href="/dashboard" class="btn boot "><i style="color: white;" class="fas fa-user"></i></a></li>
-                <li><a href="/logout" class="btn boot">Keluar</a></li>
+                <li><a href="/logout" class="btn boot">keluar</a></li>
 
                 @endif
             </ul>

@@ -116,8 +116,25 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <!-- Card header -->
+            <div class="card-header">
+                <!-- Surtitle -->
+                <h6 class="surtitle">Performance</h6>
+                <!-- Title -->
+                <h5 class="h3 mb-0">Total orders</h5>
+            </div>
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="chart">
+                    <!-- Chart wrapper -->
+                    <canvas id="chart-bars" class="chart-canvas"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <!-- @if (Auth::user()->role == 'admin')
 <div class="row">
@@ -240,6 +257,27 @@
 </div>  -->
 
 
+<script>
+    var BarsChart = function() {
+        var a = $("#chart-bars");
+
+        let listData = []
+        a.length && function(a) {
+            var t = new Chart(a, {
+                type: "bar",
+                data: {
+                    labels: ["Jul", "merah", "Sep", "Oct", "Nov", "Dec"],
+                    datasets: [{
+                        label: "Sales",
+                        data: [25, 20, 30, 22, 17, 29]
+                    }]
+                }
+            });
+            a.data("chart", t)
+        }(a)
+    }();
+    BarsChart()
+</script>
 @elseif(Auth::user()->role == 'user')
 
 @endif
