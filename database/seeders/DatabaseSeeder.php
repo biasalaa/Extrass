@@ -59,25 +59,32 @@ class DatabaseSeeder extends Seeder
             "biodata_id" => 1,
             "username" => "admin",
             "password" => bcrypt("admin"),
-            "role" => "admin"
+            "role" => "admin",
+            "foto"=>"basket.jpeg"
+
         ]);
 
         User::create([
             "biodata_id" => 2,
             "username" => "anindya123",
-            "password" => bcrypt("anindya")
+            "password" => bcrypt("anindya"),
+            "foto"=>"basket.jpeg"
         ]);
 
         User::create([
             "biodata_id" => 3,
             "username" => "abdulwahid123",
-            "password" => bcrypt("abdulwahid")
+            "password" => bcrypt("abdulwahid"),
+            "foto"=>"basket.jpeg"
+
         ]);
 
         User::create([
             "biodata_id" => 4,
             "username" => "afindiyanti123",
-            "password" => bcrypt("afindiyanti")
+            "password" => bcrypt("afindiyanti"),
+            "foto"=>"basket.jpeg"
+
         ]);
 
 

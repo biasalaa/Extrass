@@ -3,6 +3,7 @@
 @section('main')
 
 <!-- Header -->
+@if (Auth::user()->role == 'admin')
 <!-- Header -->
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
@@ -239,4 +240,7 @@
 </div>  -->
 
 
+@elseif(Auth::user()->role == 'user')
+
+@endif
 @endsection

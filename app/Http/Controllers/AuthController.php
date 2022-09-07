@@ -55,14 +55,31 @@ class AuthController extends Controller
 
     public function Registration(Request $request)
     {
+
         $request->validate([
-            'nama' => ['required'],
-            'nohp' => ['required'],
+            'nama' => ['required','string',"alpha"],
+            'nohp' => ['required',"digits:12"],
             'username' => ['required', 'unique:users'],
             'password' => ['required', 'min:8'],
-            'alamat' => ['required']
-        ]);
+            'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'alamat' => ['required',"max:100"]
+        ],
+    [
+        "nama.required"=>"nama tidak boleh kosong",
+        "nohp.required"=>"no telepon tidak boleh kosong",
+        "nohp.digits"=>"no telepon harus 12 digit",
+        "password.required"=>"password tidak boleh kosong",
+        "password.min"=>"password minimal 8 caracter",
+        "alamat.required"=>"alamat tidak boleh kosong",
+        "alamat.max"=>"alamat tidak boleh lebih dari 100 caracter",
+        ]
+    );
 
+        $nama = $request->file('file')->getClientOriginalName();
+   
+
+       $request->file->move(public_path('img'),$nama);
+       
         $user = Biodata::create([
             "nama" => $request->nama,
             "nohp" => $request->nohp,
@@ -72,6 +89,7 @@ class AuthController extends Controller
         User::create([
             "username" => $request->username,
             "password" => bcrypt($request->password),
+            "foto"=>$nama,
             "biodata_id" => $user->id
         ]);
 

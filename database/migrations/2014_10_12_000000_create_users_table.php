@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('biodata_id')->unsigned();
             $table->string('username')->unique();
             $table->string('password');
+            $table->string('foto');
             $table->enum('role', ['admin', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
