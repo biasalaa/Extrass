@@ -14,13 +14,22 @@ class LandingController extends Controller
 {
     public function index()
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78045a2deda02dcf8a91d9325b307ab9d7d128bc
         $category = Category::all();
         $extra = Extrakulikuler::all();
         return view('landingpage.landing', [
 
+<<<<<<< HEAD
             "category"=>$category,
             "extra"=>$extra
          ]);
+=======
+            "category" => $category,
+            "extra" => $extra
+        ]);
+>>>>>>> 78045a2deda02dcf8a91d9325b307ab9d7d128bc
     }
 }

@@ -18,7 +18,7 @@ class ContactController extends Controller
     public function index()
     {
         return view('dashboard.contact', [
-            "datas" => Contact::all(),
+            "data" => Contact::all(),
             "no" => $no = 1
         ]);
     }
@@ -44,13 +44,16 @@ class ContactController extends Controller
         $validatedData = $request->validate([
             "nama" => ['required',"string"],
             "email" => ['required', 'email'],
+<<<<<<< HEAD
             "message" => ['required',"max:100"]
+=======
+            "message" => ['required', "min:100"]
+>>>>>>> 78045a2deda02dcf8a91d9325b307ab9d7d128bc
         ]);
         Contact::create($validatedData);
 
         Alert::alert()->success('Data Berhasil Dikirim');
         return redirect('/');
-
     }
 
     /**
@@ -100,7 +103,7 @@ class ContactController extends Controller
     public function destroy($id)
     {
         DB::table('contacts')->where('id', $id)->delete();
-        
+
         return redirect()->back();
     }
 }

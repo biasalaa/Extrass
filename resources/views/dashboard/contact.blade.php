@@ -1,30 +1,43 @@
 @extends('template.template')
 
 @section('main')
-<table id="file_export" border="1">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($datas as $a)
-        <tr>
-            <td>{{ $no++ }}</td>
-            <td>{{ $a->nama }}</td>
-            <td>{{ $a->email }}</td>
-            <td>
-                <button style="background-color: yellow;" class="btn"><a  href="/contact/{{ $a->id }}" style="color: black;"><i class="fas fa-eye"></i></a></button>
-                <form action="/contact/{{ $a->id }}" method="POST" style="display: inline-block;">
-                    @csrf
-                    @method("DELETE")
-                    <button class="btn" style="background-color: red;" style="color: white;"><i class="fas fa-trash"></i></a></button>
-                </form>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+<div class="container mt--6">
+    <!-- Table -->
+    <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+            <h3 class="mb-0">Datatable</h3>
+
+        </div>
+        <div class="table-responsive py-4">
+            <table class="table table-flush" id="datatable-basic">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Alamat</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach($data as $d)
+                    <tr>
+                        <td>{{$d->nama}}</td>
+                        <td>{{$d->email}}</td>
+                        <td>{{$d->message}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
 @endsection
