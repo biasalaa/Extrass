@@ -18,14 +18,12 @@ class DashboardController extends Controller
     {
         $biodata = Biodata::where('id', '>', 1)->count();
         $extra = Extrakulikuler::all()->count();
-        // $extraAll = Extrakulikuler::all();
-
-
-
+        $extraAll = Extrakulikuler::all();
 
         return view('dashboard.dashboard', [
             "biodata" => $biodata,
             "extra" => $extra,
+            "extraAll"=>$extraAll
         ]);
     }
 

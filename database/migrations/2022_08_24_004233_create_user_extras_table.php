@@ -17,6 +17,7 @@ class CreateUserExtrasTable extends Migration
             $table->id('p');
             $table->bigInteger('biodata_id')->unsigned();
             $table->bigInteger('extrakulikuler_id')->unsigned();
+            $table->tinyInteger("status")->default(1);
             $table->timestamps();
 
             $table->foreign('biodata_id')->references('id')->on('biodatas')->onUpdate('cascade')->onDelete('cascade');

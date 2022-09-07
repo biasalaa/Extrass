@@ -32,7 +32,7 @@
                                 <h3 class="font-medium m-b-0 m-t-40 " style="color: white ;">Register</h3>
                             </div>
                             <div class="row">
-                                <form class="col s12" action="/registration" method="post">
+                                <form class="col s12" action="/registration" enctype="multipart/form-data" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -72,6 +72,17 @@
                                             <input id="password" type="password" value="{{old('password')}}" class="validate" required name="password" style="color: white;">
                                             <label for="password" style="color: white;">Password</label>
                                             @error('password')
+                                            <small style="color: red;">
+                                                {{$message}}
+                                            </small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label for="password" style="color: white;position:relative;" >foto</label>
+                                            <input id="password" type="file" value="{{old('file')}}" class="validate" required name="file" style="color: white;">
+                                            @error('file')
                                             <small style="color: red;">
                                                 {{$message}}
                                             </small>

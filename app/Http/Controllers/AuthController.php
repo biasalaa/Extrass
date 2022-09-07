@@ -55,11 +55,13 @@ class AuthController extends Controller
 
     public function Registration(Request $request)
     {
+
         $request->validate([
             'nama' => ['required','string',"alpha"],
             'nohp' => ['required',"digits:12"],
             'username' => ['required', 'unique:users'],
             'password' => ['required', 'min:8'],
+            'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'alamat' => ['required',"max:100"]
         ],
     [
@@ -73,6 +75,11 @@ class AuthController extends Controller
         ]
     );
 
+        $nama = $request->file('file')->getClientOriginalName();
+   
+
+       $request->file->move(public_path('img'),$nama);
+       
         $user = Biodata::create([
             "nama" => $request->nama,
             "nohp" => $request->nohp,
@@ -82,6 +89,7 @@ class AuthController extends Controller
         User::create([
             "username" => $request->username,
             "password" => bcrypt($request->password),
+            "foto"=>$nama,
             "biodata_id" => $user->id
         ]);
 

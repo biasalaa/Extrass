@@ -44,11 +44,7 @@ class ContactController extends Controller
         $validatedData = $request->validate([
             "nama" => ['required',"string"],
             "email" => ['required', 'email'],
-<<<<<<< HEAD
             "message" => ['required',"max:100"]
-=======
-            "message" => ['required', "min:100"]
->>>>>>> 78045a2deda02dcf8a91d9325b307ab9d7d128bc
         ]);
         Contact::create($validatedData);
 
