@@ -21,14 +21,14 @@
                 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                     <!-- Nav items -->
                     <ul class="navbar-nav">
-                        @if(auth()->user()->role == "admin")
                         <li class="nav-item">
                             <a class="nav-link active" href="/dashboard">
                                 <i class="ni ni-shop text-primary"></i>
                                 <span class="nav-link-text">Dashboards</span>
                             </a>
-
+                            
                         </li>
+                        @if(auth()->user()->role == "admin")
                         <li class="nav-item">
                             <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
                                 <i class="ni ni-ungroup text-orange"></i>
