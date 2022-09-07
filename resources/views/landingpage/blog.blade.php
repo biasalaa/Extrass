@@ -16,7 +16,7 @@
             <div class="row" style="row-gap: 30px">
                 <div class="col-12 mb-5">
                     <div class="row">
-                        <div class="col-sm-6 mb-3"><img src="{{asset("img/basket.jpg")}}" class=" rounded img-fluid w-100" alt=""></div>
+                        <div class="col-sm-6 mb-3"><img src="{{asset("img/basket.jpg")}}" class=" rounded img-fluid w-100" alt=""> </div>
                         <div class="col-sm-6">
                             <h3>Judul</h3>
                             <small class="mb-3 d-block">20-juni-2022</small>
