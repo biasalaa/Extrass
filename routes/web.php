@@ -55,13 +55,13 @@ Route::post('/userterdaftar', [DashboardController::class, 'UserFilter'])->middl
 
 Route::get('/userterdaftar/{id}', [DashboardController::class, 'ShowUser'])->middleware(['auth', 'admin']);
 
-Route::get('/deleteuser/{id}', [DashboardController::class, 'DeleteUser'])->middleware(['auth', 'admin']);
+Route::delete('/deleteuser/{p}', [DashboardController::class, 'DeleteUser'])->middleware(['auth', 'admin']);
 
 Route::get('/deleteextra/{id}', [DashboardController::class, 'DeleteExtra'])->middleware(['auth', 'admin']);
 
 Route::get('edituserterdaftar/{id}', [DashboardController::class, 'EditUser'])->middleware(['auth', 'admin']);
 
-Route::post('edituserterdaftar/{id}', [DashboardController::class, 'EditUserTerdaftar'])->middleware(['auth', 'admin']);
+Route::put('edituserterdaftar/{id}', [DashboardController::class, 'EditUserTerdaftar'])->middleware(['auth', 'admin']);
 
 Route::resource('/dataextrakulikuler', extraController::class)->middleware(['auth', 'admin']);
 

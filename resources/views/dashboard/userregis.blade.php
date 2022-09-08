@@ -32,9 +32,8 @@
                         <td>{{ $d->nohp }}</td>
                         <td>{{ $d->alamat }}</td>
                         <td>
-                            <button  class="btn btn-info"><a href="/dataextrakulikuler/{{ $d->id }}" class="text-black"><i class="fas fa-eye"></i></a></button>
-                            <button  class="btn btn-success"><a href="/dataextrakulikuler/{{ $d->id }}/edit" class="text-white" ><i class="fas fa-edit"></i></a></button>
-                            <form action="/dataextrakulikuler/{{ $d->id }}" method="POST" style="display: inline-block;">
+                            <button  class="btn btn-success"><a href="/userregister/{{ $d->id }}/edit" class="text-white" ><i class="fas fa-edit"></i></a></button>
+                            <form action="/userregister/{{ $d->id }}" method="POST" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"><a ><i class="fas fa-trash"></i></a></button>

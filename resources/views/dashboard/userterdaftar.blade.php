@@ -29,12 +29,15 @@
                         <td>{{ $a->nama }}</td>
                         <td>{{ $a->nohp }}</td>
                         <td>{{ $a->nama_extra }}</td>
-                        <td><button class='btn'>{{ $a->status == 1 ? "active":"non active" }}</button></td>
                         <td>
-                            <button style="" class="btn btn-info"><a href="/dataextrakulikuler/{{ $a->id }}" style="color: black;"><i class="fas fa-pencil"></i></a></button>
-                            <button style="" class="btn btn-info"><a href="/dataextrakulikuler/{{ $a->id }}" style="color: black;"><i class="fas fa-eye"></i></a></button>
-                            <button class="btn btn-success"><a href="/dataextrakulikuler/{{ $a->id }}/edit" class="" style="color: white;"><i class="fas fa-edit"></i></a></button>
-                            <form action="/dataextrakulikuler/{{ $a->id }}" method="POST" style="display: inline-block;">
+                        <form class="mr-2" action="/edituserterdaftar/{{ $a->p  }}" method="POST">
+                            @csrf
+                            @method("put")<button type="submit" name="status" value="status" class='btn {{ $a->status == 1 ? "btn-success":"btn-danger" }}'>{{ $a->status == 1 ? "active":"keluar" }}</button></td>
+                        </form>
+                        <td class="d-flex ">
+                            <button style="" class="btn btn-info"><a href="/userterdaftar/{{ $a->p }}" style="color: black;"><i class="fas fa-eye"></i></a></button>
+                            <button class="btn btn-success"><a href="/edituserterdaftar/{{ $a->p }}" class="" style="color: white;"><i class="fas fa-edit"></i></a></button>
+                            <form action="/deleteuser/{{ $a->p }}" method="POST" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button style="" type="submit" class="btn btn-danger"><a style="color: white;"><i class="fas fa-trash"></i></a></button>

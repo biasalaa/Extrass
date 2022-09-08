@@ -43,6 +43,7 @@ class DashboardController extends Controller
             ->join('user_extras', 'extrakulikulers.id', '=', 'user_extras.extrakulikuler_id')
             ->join('biodatas', 'user_extras.biodata_id', '=', 'biodatas.id')
             ->select('extrakulikulers.nama_extra','status', 'user_extras.p', 'biodatas.*')
+            ->orderBy("status","asc")
             ->get();
 
         return view('dashboard.userterdaftar', [
@@ -112,19 +113,34 @@ class DashboardController extends Controller
 
     public function EditUserTerdaftar(Request $request, $p)
     {
+        if ($request->status) {
+            $e = DB::table("user_extras")->where("p", $p)->first();
+            if($e->status == 1){
+                $e = DB::table("user_extras")->where("p", $p)->update([
+                    "status"=>0
+                ]);
+            }else{
+                $e = DB::table("user_extras")->where("p", $p)->update([
+                    "status"=>1
+                ]);
+            }
+            
+        }
         $validateData = $request->validate([
             "extra" => ['required'],
         ]);
+
         $e = DB::table("user_extras")->where("p", $p)->where("extrakulikuler_id", $request->extra)->count();
         $idUser = DB::table("user_extras")->where("p", $p)->first();
         $es = DB::table("user_extras")->where("extrakulikuler_id", $request->extra)->where("biodata_id", $idUser->biodata_id)->count();
+
+
 
         if ($e > 0) {
             Alert::alert()->success('Data Sudah Ada');
             return redirect('/userterdaftar');
         } elseif ($es > 0) {
             Alert::alert()->success('Data Sudah Ada');
-
             return redirect('/userterdaftar');
         } else {
 
