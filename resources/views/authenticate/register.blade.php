@@ -78,17 +78,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <label for="file" style="color: white;position:relative;" ><img src="{{asset('img/basket.jpg')}}" id="img" class="img-fluid w-100" style="width: 100%;" alt=""></label>
-                                            <input id="file" type="file" value="{{old('file')}}"  class="validate d-none" required name="file" style="color: white;display:none;">
-                                            @error('file')
-                                            <small style="color: red;">
-                                                {{$message}}
-                                            </small>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                   
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <textarea id="textarea1" class="materialize-textarea" name="alamat" style="color: white;" >{{old('alamat')}}</textarea>

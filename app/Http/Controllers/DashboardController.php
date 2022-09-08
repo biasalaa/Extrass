@@ -42,7 +42,7 @@ class DashboardController extends Controller
         $datas = DB::table('extrakulikulers')
             ->join('user_extras', 'extrakulikulers.id', '=', 'user_extras.extrakulikuler_id')
             ->join('biodatas', 'user_extras.biodata_id', '=', 'biodatas.id')
-            ->select('extrakulikulers.nama_extra', 'user_extras.p', 'biodatas.*')
+            ->select('extrakulikulers.nama_extra','status', 'user_extras.p', 'biodatas.*')
             ->get();
 
         return view('dashboard.userterdaftar', [

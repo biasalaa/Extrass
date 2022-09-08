@@ -59,6 +59,8 @@
     <script src="{{asset('template')}}/assets/js/argon.js?v=1.1.0"></script>
     <!-- Demo JS - remove this in your project -->
     <script src="{{asset('template')}}/assets/js/demo.min.js"></script>
+
+ 
 </body>
 
 </html>
