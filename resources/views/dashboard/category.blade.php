@@ -62,11 +62,11 @@
                         <td>{{ $a->nama_category }}</td>
 
                         <td>
-                            <button style="background-color: blue;" class="btn"><a href="/category/{{ $a->id }}/edit" style="color: white;"><i class="fas fa-edit"></i></a></button>
+                            <button  class="btn btn-success"><a href="/category/{{ $a->id }}/edit" style="color: white;"><i class="fas fa-edit"></i></a></button>
                             <form action="/category/{{ $a->id }}" method="POST" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button style="background-color: red;" class="btn" type="submit"><i class="fas fa-trash" style="color: white;"></i></button>
+                                <button  class="btn btn-danger" type="submit"><i class="fas fa-trash" style="color: white;"></i></button>
                             </form>
                         </td>
                     </tr>

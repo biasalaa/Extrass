@@ -31,6 +31,7 @@
                         <td>{{ $a->nama_extra }}</td>
                         <td><button class='btn'>{{ $a->status == 1 ? "active":"non active" }}</button></td>
                         <td>
+                            <button style="" class="btn btn-info"><a href="/dataextrakulikuler/{{ $a->id }}" style="color: black;"><i class="fas fa-pencil"></i></a></button>
                             <button style="" class="btn btn-info"><a href="/dataextrakulikuler/{{ $a->id }}" style="color: black;"><i class="fas fa-eye"></i></a></button>
                             <button class="btn btn-success"><a href="/dataextrakulikuler/{{ $a->id }}/edit" class="" style="color: white;"><i class="fas fa-edit"></i></a></button>
                             <form action="/dataextrakulikuler/{{ $a->id }}" method="POST" style="display: inline-block;">
